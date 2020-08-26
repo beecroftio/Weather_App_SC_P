@@ -101,6 +101,9 @@ hr {
 footer {
   text-align: center;
 }
+footer:hover {
+  color: #117a8b;
+}
 a:hover {
   color: #fff;
   text-decoration: none;
