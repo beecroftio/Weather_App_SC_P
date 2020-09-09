@@ -22,6 +22,7 @@
 }
 #currentLocation.btn.btn-success {
   background-color: #17a2b8;
+  outline-style: none;
 }
 #c-button {
   background: none;
@@ -44,6 +45,7 @@
   color: #fff;
   background-color: #138496;
   border-color: #117a8b;
+  outline-style: none;
 }
 #button-search-box:hover {
   color: #fff;

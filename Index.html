@@ -19,88 +19,71 @@
     <title>Weather_App SC_PLUS</title>
 </head>
 <body>
+    <!--Webpage Container-->
     <div class="webpage-container">
+        <!--Weather App Card-->
         <div class="weather-app-card">
-
+            <!--Top Section of Card-->
             <section class="top">
+                <!--Search Box-->
                 <form class="top" id="search-box">
-                    <input type="text" class="form-control" placeholder="Search City" id="search-text-input" />
-                    <button type="submit" class="btn shadow-none" class="btn btn-primary mb-2"
-                        id="button-search-box">Let's Go</button>
+                    <!--Search Box Input-->
+                    <input type="text" class="form-control" placeholder="Search City to Display Weather and Forecast"
+                        id="search-text-input" />
+                    <!--Search Box Button-->
+                    <button type="submit" class="btn shadow-none" class="btn btn-primary mb-2" id="button-search-box">Let's
+                        Go</button>
+                    <!--Current Location Button-->
                     <button type="submit" class="btn btn-success" id="currentLocation">Current Location</button>
                 </form>
             </section>
-   
+    
+            <!--Middle Section of Card-->
             <section class="middle">
-                <div class="row" class="middle"> 
+                <!--Middle Columns-->
+                <div class="row" class="middle">
+                    <!--Left Column-->
                     <div class="col" class="middle" id="middle-col-left">
-                        <p> 
+                        <!--City, Temperature, Description, Time & Date-->
+                        <p>
+                            <!--Displayed City-->
                         <h1 id="city-name">Cardiff</h1>
+                        <!--Current Temperature-->
                         <h3 id="temperature-place">
-                            <h3> 
+                            <h3>
+                                <!--Current Temperature Buttons-->
                                 <button id="c-button">
                                     <a href="#">°C</a>
                                 </button>
                                 <button id="f-button">
                                     <a href="#">°F</a>
                                 </button>
-                                <h4 id="weather-description"></h4>
+    
                                 </p>
+                                <!--Current Time and Date-->
                                 <h2></h2>
                     </div>
+                    <!--Right Column-->
                     <div class="col" class="middle" id="middle-col-right">
-                        <h4><i id="current-icon" class="fas fa-cloud-sun-rain" aria-hidden="true"></i><br /></h4>
+                        <!--Current City Weather Icon-->
+                        <br />
+                        <h4 id="weather-description"></h4>
+                        <img src="" id="current-icon" />
+    
+                        <!--Current Weather Description-->
+    
                     </div>
+                    <!--Image of Weatherman SVG
+              <img src="weather.svg" alt="weather forecaster" width="300" />-->
             </section>
-
+    
+            <!--Bottom Section of Card-->
             <section class="bottom">
                 <hr />
+                <!--Columns for Weather-->
                 <div class="row" class="bottom" id="upcoming">
-                    <div class="col-2 offset-1">
-                        Friday
-                        <br />
-                        20/07
-                        <br />
-                        <i class="fas fa-cloud-sun"></i>
-                        <br />
-                        17°C
-                    </div>
-                    <div class="col-2">
-                        Saturday
-                        <br />
-                        21/07
-                        <br />
-                        <i class="fa fa-sun-o" aria-hidden="true"></i>
-                        <br />
-                        19°C
-                    </div>
-                    <div class="col-2">
-                        Sunday
-                        <br />
-                        22/07
-                        <br />
-                        <i class="fas fa-cloud"></i>
-                        <br />
-                        18°C
-                    </div>
-                    <div class="col-2">
-                        Monday
-                        <br />
-                        23/07
-                        <br />
-                        <i class="fa fa-sun-o" aria-hidden="true"></i>
-                        <br />
-                        19°C
-                    </div>
-                    <div class="col-2">
-                        Tuesday
-                        <br />
-                        24/07
-                        <br />
-                        <i class="fas fa-cloud-sun"></i>
-                        <br />
-                        17°C
-                    </div>
+                    <!--Friday-->
+    
                 </div>
             </section>
         </div>

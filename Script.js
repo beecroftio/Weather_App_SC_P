@@ -42,6 +42,43 @@ let temperatureUnit = "celsius";
 
 axios.get(apiUrl).then(getCityTemperature);
 
+//Setting time intervals for 6-day forecast
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  return `${hour}:${minute}`;
+}
+
+//Setting icons and max/min temperatures
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#upcoming");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  console.log(forecast);
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += ` <div class="col-2">
+      ${formatHours(forecast.dt * 1000)}
+      <br />
+      <img src="http://openweathermap.org/img/wn/${
+        forecast.weather[0].icon
+      }@2x.png" />
+      <br />
+      <strong>${Math.round(forecast.main.temp_max)}°C</strong> | ${Math.round(
+      forecast.main.temp_min
+    )}°C
+    </div>`;
+  }
+}
+
 //Setting city name and current temperature
 function searchedCity(event) {
   event.preventDefault();
@@ -49,19 +86,27 @@ function searchedCity(event) {
 
   let searchedCityPrint = document.querySelector("#city-name");
   searchedCityPrint.innerHTML = city;
-
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(getCityTemperature);
+
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiURL).then(displayForecast);
 }
 
 function getCityTemperature(response) {
   let temperaturePlace = document.querySelector("#temperature-place");
   let temperaturePrint = Math.round(response.data.main.temp);
+
   let weatherDescription = document.querySelector("#weather-description");
-
   weatherDescription.innerHTML = response.data.weather[0].description;
-  temperaturePlace.innerHTML = `${temperaturePrint}`;
 
+  let iconElement = document.querySelector("#current-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  temperaturePlace.innerHTML = `${temperaturePrint}`;
   temperatureUnit = "celsius";
 }
 
@@ -73,6 +118,7 @@ let c_temperature = document.querySelector("#c-button");
 c_temperature.addEventListener("click", function () {
   if (temperatureUnit === "fahrenheit") {
     let temperaturePlace = document.querySelector("#temperature-place");
+    //console.log(temperaturePlace.innerHTML);
     let temperaturePrint = Math.round(
       (5 / 9) * (temperaturePlace.innerHTML - 32)
     );
@@ -86,6 +132,7 @@ let f_temperature = document.querySelector("#f-button");
 f_temperature.addEventListener("click", function () {
   if (temperatureUnit === "celsius") {
     let temperaturePlace = document.querySelector("#temperature-place");
+    //console.log(temperaturePlace.innerHTML);
     let temperaturePrint = Math.round(
       (temperaturePlace.innerHTML * 9) / 5 + 32
     );
