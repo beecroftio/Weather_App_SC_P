@@ -37,10 +37,12 @@ let city = "Cardiff";
 
 let apiKey = "3e1b3b8411774a6a5d3ce0ee0f1a08dc";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-
+apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+axios.get(apiURL).then(displayForecast);
 let temperatureUnit = "celsius";
 
 axios.get(apiUrl).then(getCityTemperature);
+axios.get(apiURL).then(displayForecast);
 
 //Setting time intervals for 6-day forecast
 function formatHours(timestamp) {
