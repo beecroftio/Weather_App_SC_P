@@ -163,6 +163,9 @@ function getTemperature_usingPosition(response) {
   let searchedCityPrint = document.querySelector("#city-name");
   searchedCityPrint.innerHTML = response.data.name;
   temperatureUnit = "celsius";
+
+  apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiURL).then(displayForecast);
 }
 
 let currentLocation_button = document.querySelector("#currentLocation");
